@@ -1,0 +1,15 @@
+
+.map{
+    filter: grayscale(100%) invert(92%) contrast(93%);
+
+}
+.ubicacion{
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.ubicacion h2{
+    color: #ffffff;
+    text-align: center;
+}

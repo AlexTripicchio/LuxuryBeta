@@ -1,0 +1,785 @@
+/* ==============================
+   GENERAL Y RESET
+============================== */
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Times, serif;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* ==============================
+   HEADER Y NAVEGACIÓN
+============================== */
+header {
+  background-color: #6a0dad;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 190px;
+}
+
+.menu-icon {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+  object-fit: cover;
+  border: 3px solid #6a0dad;
+  display: flex;
+  align-self: center;
+}
+.menu-icon:hover {
+  background-color: blueviolet;
+}
+
+/* Menú desplegable */
+.menu {
+  display: none; /* Se muestra solo al agregar la clase 'show' */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #6a0dad;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 2px solid #4a087b;
+  flex-direction: column;
+  z-index: 9999;
+}
+.menu.show {
+  display: flex;
+}
+.menu li {
+  padding: 10px;
+  text-align: center;
+}
+.menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+.menu li:hover {
+  background-color: #4a087b;
+}
+
+/* ==============================
+   SEARCH Y BOTÓN DE USUARIO
+============================== */
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.search-container input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+.search-container button {
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.search-container button:hover {
+  background-color: rgb(89, 1, 172);
+}
+
+#login-register {
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  margin-right: 35px;
+}
+#login-register:hover {
+  background-color: rgb(89, 1, 172);
+}
+
+/*Estilos para el Modal de autenticación*/
+
+  .modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    position: relative;
+    border-radius: 5px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+  }
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .auth-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .auth-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+  }
+  .auth-buttons button.active {
+    background: #bbb;
+  }
+  .auth-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  .auth-form form label {
+    margin: 5px 0 2px;
+  }
+  .auth-form form input {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .auth-form form button {
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+
+/*
+BIENVENIDA
+*/
+
+
+.foto-bienvenida {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.img-bienvenida {
+  max-width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.imgbienvenida {
+  width: 100%;
+  height: auto;
+  max-width: 800px; /* Ajusta este valor según necesites */
+  border-radius: 20px black;
+  border: 10px 5px 10px black;
+  border-top: #000;
+  z-index: 1;
+}
+
+
+/* ==============================
+   FOOTER Y LINKS
+============================== */
+.volver-arriba {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.volver-arriba button {
+  padding: 10px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.volver-arriba button a {
+  text-decoration: none;
+  color: white;
+}
+.volver-arriba button:hover {
+  background-color: rgb(89, 1, 172);
+}
+
+footer {
+  background-color: #6a0dad;
+  color: white;
+  text-align: center;
+  padding: 20px 20px 5px;
+}
+footer p {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.link-conteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.logo-footer{
+  border-radius: 40px;
+}
+.links ul {
+  list-style: none;
+  padding: 0;
+}
+.links li {
+  margin: 10px 0;
+}
+.links a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.links h4 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.links a:hover { 
+  background: #520b96;
+  border-radius: 10px;
+  padding: 5px;
+  transform: scale(1.05);
+}
+
+/* ==============================
+   SECCIONES GENERALES
+============================== */
+section {
+  padding: 50px;
+  text-align: center;
+}
+
+.horarios {
+  padding: 30px;
+  background-color: #111;
+  text-align: left;
+}
+.titulohorario {
+  margin-top: 15px;
+  text-align: center;
+}
+.horario-info h2 {
+  font-size: 50px;
+  margin-bottom: 30px;
+  color: white;
+  font-weight: bold;
+}
+.horario-txt {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.txt {
+  text-align: center;
+  color: #ffffff;
+  max-width: 300px;
+}
+.txt h4 {
+  font-size: 18px;
+  color: #a7a7a7;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+.txt p {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.secciones {
+  font-family: "Luxurious Roman";
+}
+
+
+
+/*PRODUCTOS*/
+/* Estilos generales (opcional) */
+
+/* Contenedor principal  */
+.ml-container {
+  max-width: 1200px;   /* Ancho máximo */
+  margin: 20px auto;   /* Centra horizontalmente */
+  padding: 0 20px;     /* Espacio lateral */
+}
+
+/* Header: título  */
+.ml-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ml-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.ml-header a {
+  text-decoration: none;
+  color: #3483fa;  /* Azul estilo ML */
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Contenedor con scroll horizontal */
+.productos-container {
+  display: flex;         /* Muestra en fila */
+  overflow-x: auto;      /* Scroll horizontal */
+  gap: 16px;             /* Espacio entre tarjetas */
+  padding-bottom: 10px;  /* Un poco de espacio para que no corte */
+}
+
+#inicio{
+  background:linear-gradient(#6a0dad 2%,rgb(26, 26, 26)) 90%;
+
+}
+
+/* Mantengo tus estilos de .carousel-item */
+.carousel-item {
+  background-color: #8b4ede; /* Morado */
+  color: #fff;
+  width: 250px;
+  min-height: 340px;
+  border-radius: 10px;
+  margin: 0 10px;  /* puedes quitarlo si usas gap */
+  padding: 20px;
+  text-align: center;
+  flex-shrink: 0;  /* Evita que se reduzca si no hay espacio */
+}
+
+/* Contenedor de la imagen */
+.img-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Título del producto */
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+/* Precio */
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* (Opcional) Si quisieras añadir el bloque de cantidad y botón de "Agregar" */
+.quantity-add {
+  margin-bottom: 10px;
+}
+.quantity-add input {
+  width: 50px;
+  text-align: center;
+}
+.add-to-cart {
+  background-color: #fff;
+  color: #8b4ede;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.add-to-cart:hover {
+  background-color: #ddd;
+}
+
+
+
+/* ==============================
+   CATÁLOGO Y CARRUSEL DE PRODUCTOS
+============================== */
+.catalog-container {
+  display: flex;
+  width: 80%;
+  height: 500px;
+  background-color: rgb(39, 39, 39);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(3, 3, 3, 0.5);
+  margin: 50px auto;
+}
+.button-column {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-right: 20px;
+}
+
+/* Botón del catálogo */
+.catalog-btn {
+  margin: 5px;
+  background-color: #000;
+  color: blueviolet;
+  cursor: pointer;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 2rem 5rem;
+  position: relative;
+  border: 1px solid;
+  overflow: hidden;
+  transition: transform 0.2s, background 0.2s;
+  flex: 1;
+  margin: 0;
+}
+
+
+.catalog-btn .dinamico,
+.catalog-btn .estatico {
+  transition: transform 0.2s;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+}
+.catalog-btn .dinamico {
+  background: #fff;
+  color: #000;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.catalog-btn .estatico {
+  transform: translateY(0);
+}
+.catalog-btn:hover .estatico {
+  transform: translateY(100%);
+}
+.catalog-btn:hover .dinamico {
+  transform: translateX(0);
+}
+.catalog-btn:hover {
+  background: #520b96;
+  transform: scale(1.05);
+}
+
+/* ==========================
+   Estado final "congelado"
+========================== */
+.catalog-btn.selected {
+  /* Fuerza el fondo blanco y texto negro en el botón */
+  background-color: #fff !important;
+  color: #000 !important;
+  transform: none !important; /* Quita la escala del hover */
+}
+
+/* Forzamos a que la capa "dinamico" quede visible al 100% */
+.catalog-btn.selected .dinamico {
+  transform: translateX(0) !important;
+}
+
+/* Y la capa "estatico" quede oculta hacia abajo */
+.catalog-btn.selected .estatico {
+  transform: translateY(100%) !important;
+}
+
+/* Contenido y transición del carrusel */
+.catalog-content {
+  flex: 1;
+  position: relative;
+  height: auto;
+  min-height: 300px;
+  background: url('https://source.unsplash.com/800x600/?store,products') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.carousel {
+  overflow: hidden;
+  scroll-behavior: smooth;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+  width: 100%;
+  display: none;
+  justify-content: center;
+}
+.carousel.activo {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+.carousel-btn {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 2;
+  position: sticky;
+  top: 40%;
+}
+.carousel-btn:hover {
+  opacity: 1;
+}
+.prev {
+  margin-right: 10px;
+}
+.next {
+  margin-left: 10px;
+}
+.carousel-item {
+  background-color: #8b4ede;
+  color: #fff;
+  width: 250px;
+  min-height: 340px;
+  border-radius: 10px;
+  margin: 0 10px;
+  padding: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.img-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.quantity-add {
+  margin-bottom: 10px;
+}
+.quantity-add input {
+  width: 50px;
+  text-align: center;
+}
+.add-to-cart {
+  background-color: #fff;
+  color: #8b4ede;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.add-to-cart:hover {
+  background-color: #ddd;
+}
+
+/* MODULO DE REGISTRO */
+
+/* ========== MODAL OVERLAY ========== */
+#auth-modal {
+  /* Oculto por defecto; cámbialo con JavaScript cuando quieras mostrarlo */
+  display: none;
+  position: fixed;
+  z-index: 9999; /* Asegura que quede por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* Fondo semitransparente para oscurecer el resto de la página */
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto; /* Para que si el contenido es grande, se pueda desplazar */
+}
+
+/* ========== CONTENIDO DEL MODAL ========== */
+.modal-content {
+  position: relative;
+  background-color: #1e1e1e; /* Fondo oscuro */
+  margin: 5% auto;           /* Centra el contenedor vertical y horizontal */
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;          /* Ajusta el ancho máximo */
+  border-radius: 8px;
+  color: #fff;               /* Texto blanco */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* ========== BOTÓN DE CERRAR (X) ========== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ========== BOTONES "INICIAR SESIÓN" / "REGISTRARSE" ========== */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+/* Estilo base para ambos botones */
+.auth-buttons button {
+  flex: 1;                  /* Para que ambos ocupen el mismo ancho */
+  background-color: #8b4ede; 
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.auth-buttons button:hover {
+  background-color: #a26aff; /* Un poco más claro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+/* Indica el botón activo (por ejemplo, si estás en "Iniciar Sesión") */
+.auth-buttons button.active {
+  background-color: #b586f1; /* Un color diferente para destacar */
+}
+
+/* ========== FORMULARIOS DE LOGIN / REGISTER ========== */
+.auth-form h2 {
+  margin-bottom: 15px;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Etiquetas y campos de texto */
+.auth-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.auth-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #000;            /* Texto oscuro dentro del input */
+}
+
+/* Botón para enviar el formulario (Iniciar sesión / Registrarse) */
+.auth-form button[type="submit"] {
+  width: 100%;
+  background-color: #8b4ede;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.auth-form button[type="submit"]:hover {
+  background-color: #a26aff;
+}
+
+
+
+
+
+/* ==============================
+   RESPONSIVIDAD
+============================== */
+@media (max-width: 768px) {
+  .menu-container,
+  .search-container,
+  .user-cart,
+  .header-icons {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+

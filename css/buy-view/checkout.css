@@ -1,0 +1,391 @@
+/* Estilos generales */
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color:black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: blueviolet;
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.logo {
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
+}
+.logo:hover{
+    border: blueviolet;
+}
+.logo-sub {
+    color: white;
+}
+
+.checkout-container {
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Columna principal */
+.checkout-main {
+    flex: 7;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Resumen de Compra */
+.checkout-summary {
+    flex: 3;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+/* Sombras y bordes */
+.checkout-main, .checkout-summary {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+input[type="text"], input[type="email"], select {
+    border-radius: 6px;
+}
+
+/* Ajustes de márgenes y espaciado */
+.checkout-main, .checkout-summary {
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.step {
+    padding: 12px;
+}
+
+
+/* Estilos de las secciones */
+h2, h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.item-info p, .item-price {
+    font-size: 14px;
+}
+
+/* Tamaños de texto */
+h2 {
+    font-size: 22px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+label {
+    font-size: 14px;
+}
+.step {
+    font-size: 16px;
+}
+
+input[type="text"], input[type="email"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, select:focus {
+    border-color: #8cccad;
+}
+
+/* Estilos de los pasos de navegación */
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    cursor: default; /* Cambia el cursor para indicar que no es clickeable */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f2f7fc;
+    transition: all 0.3s ease;
+}
+
+
+/* Indicador de progreso */
+.step.active {
+    border-bottom: 3px solid #4a7cb1;
+    color: #4a7cb1;
+    font-weight: bold;
+}
+
+/* Transiciones y animaciones */
+.step, .next-button {
+    transition: all 0.3s ease;
+}
+
+.step:hover, .next-button:hover {
+    transform: scale(1.02);
+}
+
+
+.step:hover {
+    background-color: #e8f7f0; /* Efecto visual al pasar el cursor */
+    border-bottom: 3px solid #8cccad;
+}
+
+/* Deshabilitar clics en pasos */
+.step:not(.active) {
+    pointer-events: none;
+    opacity: 0.6;
+}
+.step.active {
+    border-bottom: 3px solid #4a7cb1;
+    color: #4a7cb1;
+    font-weight: bold;
+    transform: scale(1.05); /* Efecto visual para el paso activo */
+}
+/* Ocultar secciones no activas */
+#section-1, #section-2, #section-3 {
+    display: none;
+}
+
+#section-1.active, #section-2.active, #section-3.active {
+    display: block;
+}
+
+/* Caja de subida de imagen */
+.upload-label {
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Caja de archivo y botones */
+.upload-box {
+    transition: all 0.3s ease;
+    padding: 20px;
+    font-size: 16px;
+    background-color: #f0f8f5;
+}
+
+.upload-box:hover {
+    background-color: #e8f7f0;
+    border-color: #8cccad;
+}
+
+
+#preview-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #888;
+    width: 100%;
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .checkout-main,
+    .checkout-summary {
+        width: 100%;
+        flex: none;
+    }
+    .checkout-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .next-button {
+        width: 100%;
+    }
+}
+    /* Ajustes de responsividad */
+@media (max-width: 600px) {
+    .step {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .checkout-container {
+        padding: 10px;
+    }
+
+    h2, h3 {
+        font-size: 18px;
+    }
+
+    .next-button {
+        padding: 12px;
+        width: 100%;
+        max-width: 250px;
+    }
+}
+.cart-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 3px solid blueviolet;
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 5px solid blueviolet;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-price {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.promo {
+    display: flex;
+    gap: 10px;
+}
+
+.promo input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.promo button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.promo button:hover {
+    background-color: #45a049;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.back-button {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    max-width: 150px;
+}
+
+
+.back-button:hover {
+    background-color: #d32f2f;
+}
+.back-button {
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.next-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    max-width: 150px;
+}
+
+.next-button:hover {
+    background-color: #45a049;
+}
+
+
+
+.next-button {
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img{
+    display: none;
+}
+
+.cart-item button{
+    display: none;
+}
+

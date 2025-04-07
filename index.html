@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Vapers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/css-cart/css-cart-ico.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init("alexander.tripicchio@gmail.com"); // Reemplaza YOUR_USER_ID por tu EmailJS User ID
+      })();
+    </script>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            
+            <div class="menu-container">
+                
+                <!-- <button class="menu-button" onclick="toggleMenu()">Menú</button> -->
+                <img src="img/logo1.png" alt="menu" class="menu-icon" onclick="toggleMenu()">
+                <ul class="menu" id="menu" >
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#horarios">Horarios</a></li>
+                    <li><a href="#ubicacion">Dónde estamos</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="search-container">
+
+            <input type="text" placeholder="Buscar productos...">
+            <button type="submit">Buscar</button>
+            
+        </div>
+        <div class="user-cart">
+            <button id="login-register">Iniciar Sesión / Registro</button>
+        </div>
+
+        
+        <div class="header-icons" alt="carrito">
+          <!-- Icono de Carrito de Compras -->
+          <div class="icon cart-icon" onclick="toggleCartMenu()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span> <!-- Contador de carrito -->
+          </div>
+        </div>
+      </header>
+      <!-- Ventana desplegable de carrito -->
+      <div id="cart-menu" class="cart-dropdown" hidden>
+        <button class="close-button" onclick="toggleCart()">✕</button>
+        <h3>Mi Pedido</h3>
+        <div id="cart-items">
+          <!-- Los ítems del carrito se agregarán aquí dinámicamente -->
+        </div>
+        <hr>
+        <p class="total-price">TOTAL: <span id="total-price">$0</span></p>
+        <p class="free-shipping">Te faltan <span id="shipping-remaining">$400.700</span> para conseguir envío gratis!</p>
+        <div class="progress-bar">
+          <div class="progress" id="progress-bar" style="width: 0%;"></div>
+        </div>
+        <button onclick="finalizarCompra()" class="checkout-button"><a href="finalizar-compra.html" >Finalizar Compra</a></button>
+      </div>
+      
+        </div>
+
+        
+      <!--PROBAR SI FUNCIONA VENTANA DE INICIO DE SESION-->
+  <!-- Modal de Autenticación (Login/Registro) -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <div class="auth-buttons">
+        <button id="show-login" class="active">Iniciar Sesión</button>
+        <button id="show-register">Registrarse</button>
+      </div>
+      <!-- Formulario de Inicio de Sesión -->
+      <div id="login-form" class="auth-form">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" required />
+          <label for="login-password">Contraseña:</label>
+          <input type="password" id="login-password" required />
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+      <!-- Formulario de Registro -->
+      <div id="register-form" class="auth-form" style="display: none;">
+        <h2>Registrarse</h2>
+        <form id="registerForm">
+          <label for="register-email">Email:</label>
+          <input type="email" id="register-email" required />
+          <label for="register-password">Contraseña:</label>
+          <input type="password" id="register-password" required />
+          <label for="register-confirm-password">Confirmar Contraseña:</label>
+          <input type="password" id="register-confirm-password" required />
+          <button type="submit">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+ 
+    <div class="secciones">
+    <section id="inicio">
+        <h1>Bienvenido a la Tienda de Vapers</h1>
+        <p>Encuentra los mejores vapers y accesorios aquí.</p>
+         
+        <div class="foto-bienvenida">
+          <div class="img-bienvenida">
+            <img src="img/ignitev250a.jpg" class="imgbienvenida">
+          </div>
+        </div>
+
+    </section>
+    <hr>
+    <section id="productos">
+        <h2>Productos</h2>
+        <p>Explora nuestra variedad de vapers y líquidos.</p>
+
+
+     <!-- Contenedor principal -->
+  <div class="ml-container">
+    <!-- Encabezado con título -->
+    <div class="ml-header">
+      <h2>Más vendidos de la semana en Vapes</h2>
+    </div>
+
+    <!-- Contenedor que hace scroll horizontal con tus tarjetas -->
+    <div class="productos-container">
+      
+      <!-- Tarjeta 1 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape1.png" alt="Producto 1">
+        </div>
+        <h3 class="product-title">Phenom 6.0G MUSH</h3>
+        <p class="price">$80.000</p>
+      </div>
+      
+      <!-- Tarjeta 2 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape2.png" alt="Producto 2">
+        </div>
+        <h3 class="product-title">LostMary 30k PUFF MIXER</h3>
+        <p class="price">$32.000</p>
+      </div>
+      
+      <!-- Tarjeta 3 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape3.png" alt="Producto 3">
+        </div>
+        <h3 class="product-title">IGNITE V150</h3>
+        <p class="price">$27.000</p>
+      </div>
+      
+      <!-- Tarjeta 4 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape4.png" alt="Producto 4">
+        </div>
+        <h3 class="product-title">ELFBAR 40K PUFF</h3>
+        <p class="price">$34.000</p>
+      </div>
+      
+      <!-- Tarjeta 5 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape5.png" alt="Producto 5">
+        </div>
+        <h3 class="product-title">TORCH 7,5G</h3>
+        <p class="price">$80.000</p>
+      </div>
+      
+      <!-- Tarjeta 6 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape6.png" alt="Producto 6">
+        </div>
+        <h3 class="product-title">TORCH 5,0G</h3>
+        <p class="price">$60.000</p>
+      </div>
+      
+      <!-- Tarjeta 7 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape7.png" alt="Producto 7">
+        </div>
+        <h3 class="product-title">GEEKBAR 25K PUFF</h3>
+        <p class="price">$26.000</p>
+      </div>
+      
+      <!-- Tarjeta 8 -->
+      <div class="carousel-item">
+        <div class="img-container">
+          <img src="img/vape8.png" alt="Producto 8">
+        </div>
+        <h3 class="product-title">PHENOM 6.0G</h3>
+        <p class="price">75.000</p>
+      </div>
+      
+    </div> <!-- Fin .productos-container -->
+  </div> <!-- Fin .ml-container -->
+    </section>
+    
+    <section class="catalog-container">
+        <div class="button-column">
+            <button class="catalog-btn" onclick="showCatalog('catalog1')" >  <span class="dinamico">Godiness</span>
+                <span class="estatico">Vapes Nicotina💨</span>
+            </button>
+            <button class="catalog-btn" onclick="showCatalog('catalog2')">  <span class="dinamico">Galactico</span>
+                <span class="estatico">Vapes THC🍀</span>
+            </button>
+            <button class="catalog-btn" onclick="showCatalog('catalog3')">  <span class="dinamico">GODETO</span>
+                <span class="estatico">Vapes Hongos🍄</span>
+            </button>
+        </div>
+    
+       
+    <div id="catalogo" class="catalog-content">
+
+        
+
+
+
+
+        <!-- Carrusel: contiene las tarjetas -->
+        <div class="carousel" id="catalog1">
+          <button class="carousel-btn prev">&#10094;</button>
+          <!-- Tarjeta 1 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/vape2.png" alt="Producto 2">
+            </div>
+            <h3 class="product-title">LostMary 30k PUFF</h3>
+            <p class="price">32000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 2 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/vape3.png" alt="Producto 2">
+            </div>
+            <h3 class="product-title">IGNITE V150</h3>
+            <p class="price">27000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 3 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/vape4.png" alt="Producto 2">
+            </div>
+            <h3 class="product-title">ELFBAR 40K PUFF</h3>
+            <p class="price">34000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+           <!-- Tarjeta 4 -->
+           <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/vape7.png" alt="Producto 2">
+            </div>
+            <h3 class="product-title">GEEKBAR 25K PUFF</h3>
+            <p class="price">28000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          <button class="carousel-btn next">&#10095;</button>
+       
+        </div>
+        <!-- Fin de .carousel -->
+    
+
+
+
+
+
+        <!-- Botón "Siguiente" -->
+         <!-- Carrusel: contiene las tarjetas -->
+                <div class="carousel" id="catalog2">
+
+          <!-- Tarjeta 1 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/phenomthc1.jpg" alt="Producto 2">
+            </div>
+            <h3 class="product-title">Phenom 6.0 Strawberry zkittlez</h3>
+            <p class="price">75000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 2 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/phenomthc2.jpg" alt="Producto 2">
+            </div>
+            <h3 class="product-title">Phenom 6.0G</h3>
+            <p class="price">75000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 3 -->
+          <div class="carousel-item">
+            <div class="img-container">
+              <img src="img/Torchthc1.jpg" alt="Producto 2">
+            </div>
+            <h3 class="product-title">Torch 7,5G</h3>
+            <p class="price">80000</p>
+            <div class="quantity-add">
+              <input type="number" value="1" min="1" max="10">
+              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+            </div>
+          </div>
+          
+          
+       
+        </div>
+
+
+
+
+
+       <!-- Carrusel: contiene las tarjetas -->
+       <div class="carousel" id="catalog3">
+        <!-- Tarjeta 1 -->
+        <div class="carousel-item">
+          <div class="img-container">
+            <img src="img/vape1.png" alt="Producto 2">
+          </div>
+          <h3 class="product-title">Phenom 6.0 Mush</h3>
+          <p class="price">80000</p>
+          <div class="quantity-add">
+            <input type="number" value="1" min="1" max="10">
+            <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 2 -->
+        <div class="carousel-item">
+          <div class="img-container">
+            <img src="img/vapethcmush1.jpg" alt="Producto 2">
+          </div>
+          <h3 class="product-title">Phenom 6.0g Wonder skunk</h3>
+          <p class="price">80000</p>
+          <div class="quantity-add">
+            <input type="number" value="1" min="1" max="10">
+            <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+          </div>
+        </div>
+        
+        
+     
+      </div>
+
+
+
+
+    </section>
+    
+
+    
+    <hr>
+    <!--SECCION HORARIOS-->
+    <section id="horarios" class="horarios" >
+        <div class="horario-info">
+
+            <h2 class="titulohorario">Horario</h2>
+            <div class="horario-txt">
+
+                <div class="txt">
+                    <h4>Direccion</h4>
+                    <p>av. lope de vega 3425, CABA</p>
+                    <p>Argentina</p>
+                </div>
+                <div class="txt">
+                    <h4>Horario</h4>
+                    <p>
+                        Lunes a Viernes: 9 am - 8 pm
+                    </p>
+                    <p>
+                        Sabado y Domingo: 12 pm - 6:30 pm
+                    </p>
+                </div>
+                <div class="txt">
+                    <h4>Telefono</h4>
+                    <p>
+                        +54 011 4030-8208
+                    </p>
+                    <p>
+                        +54 011 6969-6969
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    
+        <hr>
+<!-- MAPA -->
+    <section>
+        <section class="ubicacion" id="ubicacion">
+
+            <div>
+                <h2>¿Donde Estamos?</h2>
+            </div>
+        </section>
+
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2321.6350312399795!2d-58.51719106479709!3d-34.62216802517477!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc98a8194e45b%3A0xeb9e1532636e2286!2sEscuela%20T%C3%A9cnica%20N%C2%B0%2035%20-%20Ing.%20Eduardo%20Latzina!5e0!3m2!1ses!2sar!4v1719805505700!5m2!1ses!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+<section class="volver-arriba">
+    <button><a href="#inicio">Volver Arriba</a></button>
+</section>
+</div>
+
+
+<!-- FOOTER -->     
+    <footer class="footer-container">
+        <div class="link-conteiner">
+<img class="logo-footer" src="img/logo1.png" alt="" width="50" height="50">
+          <div class="links">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="https://www.instagram.com/importados.catlex/">Instagram</a></li>
+                <li><a href="https://wa.link/5bh2od">Whatsapp</a></li>
+                <li><a href="mailto:tuemail@gmail.com?subject=Asunto%20del%20Correo&body=Hola%20Quiero%20Contactarme">Gmail</a></li>
+            </ul>
+
+          </div>
+        
+        </div>
+        <p>&copy; 2025 Tienda de Vapers - Todos los derechos reservados.</p>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+    <script src="js/navbar/js-cart/js-cart-ico.js"></script>
+</body>
+</html>

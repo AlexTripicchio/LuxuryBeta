@@ -1,0 +1,30 @@
+.footer{
+    padding: 100px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.links h4{
+color: #ffffff;
+text-transform: uppercase;
+margin-bottom: 25px;
+}
+
+.links ul li a{
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.copy p{
+    background-color: rgb(65, 5, 121);
+    color: #ffffff;
+    padding: 5px;
+    font-size: xx-small;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}

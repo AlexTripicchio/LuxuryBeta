@@ -1,0 +1,189 @@
+/* Contenedor principal del carrito (barra lateral) */
+#cart-menu.cart-dropdown {
+  position: fixed;   /* Se superpone, sin desplazar el contenido */
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: #fff;
+  z-index: 9999;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  /* Sin transform ni display: none, así se ve por defecto */
+}
+
+/* Si quieres ocultarlo con animación, define una clase, por ejemplo ".hidden" */
+#cart-menu.cart-dropdown.hidden {
+  
+  transform: translateX(100%); /* Lo saca de la pantalla */
+  transition: transform 0.3s ease;
+}
+
+.cart-icon{
+  cursor: pointer;
+}
+/* Botón para cerrar (X) */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.close-button:hover {
+  transform: scale(1.2);
+}
+
+/* Título principal del carrito */
+#cart-menu h3 {
+  margin-top: 0;  /* Quita cualquier margen superior extra */
+  text-align: center;
+}
+
+/* Contenedor de los items en el carrito */
+#cart-items {
+  margin-top: 20px;
+}
+
+/* Cada item del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Imagen del producto */
+.cart-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Detalles del producto (título, cantidad, precio) */
+.item-details {
+  flex: 1;               /* Para que ocupe todo el espacio restante */
+}
+.item-details h4 {
+  margin: 0 0 5px;
+  font-size: 0.95rem;
+}
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.quantity-controls button {
+  background-color: #8b4ede;
+  color: #fff;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.item-price {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Botón para quitar un producto (X) */
+.remove-item {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.remove-item:hover {
+  color: #ff4c4c; /* Rojo claro al pasar el mouse */
+}
+
+/* Líneas divisorias */
+#cart-menu hr {
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #444; 
+}
+
+/* Precio total */
+.total-price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.total-price span {
+  color: #a6ff9b; /* Verde claro, por ejemplo */
+}
+
+/* Mensaje de envío gratis */
+.free-shipping {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.free-shipping span {
+  font-weight: bold;
+}
+
+/* Barra de progreso */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  background-color: #8b4ede;
+  transition: width 0.3s;
+}
+
+/* Botón de "Finalizar Compra" */
+.checkout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #8b4ede;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+.checkout-button a {
+  color: #fff;
+  text-decoration: none;
+}
+.checkout-button:hover {
+  background-color: #a26aff; /* Un púrpura más claro al pasar */
+}
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .search-bar {
+      width: 60%;
+    }
+    
+     .auth-links {
+      display: none;
+    }
+  }
+  
+  .remove-item {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#cart-items{
+  color: black;}

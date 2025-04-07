@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/buy-view/checkout.css">
+    <style>
+        /* Estilos específicos para los pasos activos */
+        .step.active {
+            font-weight: bold;
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con el logo -->
+    <header class="header">
+        <a href="index.html" class="logo">Luxury<span class="logo-sub">VAPE</span></a>
+    </header>
+
+    <div class="checkout-container">
+        <!-- Barra de pasos del proceso de compra -->
+        <div class="checkout-main">
+ <!-- Ejemplo de iconos de navegación en el HTML -->
+<div class="checkout-steps">
+    <div class="step active" id="step-1">👤 1. Información de Usuario</div>
+    <div class="step" id="step-2">🚚 2. Método de Envío</div>
+    <div class="step" id="step-3">💳 3. Pago</div>
+</div>
+
+
+            <!-- Sección de Información del Usuario -->
+            <div id="section-1" style="display: block;">
+                <h2>Información</h2>
+                <form>
+                  <label for="email">Correo:</label>
+                  <input type="email" id="email" required>
+                
+                  <h3>Dirección de envío</h3>
+                  <div class="address-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" required>
+                
+                    <label for="pais">País / Región</label>
+                    <select id="pais">
+                      <option>Argentina</option>
+                    </select>
+                
+                    <label for="direccion">Dirección y altura</label>
+                    <input type="text" id="direccion" required>
+                
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" required>
+                
+                    <label for="provincia">Provincia</label>
+                    <select id="provincia">
+                      <option>Buenos Aires</option>
+                      <option>Cordoba</option>
+                      <option>Mendoza</option>
+                      <option>Entre Rios</option>
+                      <option>Otro</option>
+                    </select>
+                
+                    <label for="codigo-postal">Código Postal</label>
+                    <input type="text" id="codigo-postal" required>
+                
+                    <label for="dni">DNI</label>
+                    <input type="text" id="dni" required>
+                  </div>
+                
+                  <div class="button-group">
+                    <button type="button" onclick="generarDatos()">Generar datos aleatorios</button>
+                  </div>
+            
+                
+                    <div class="button-group">
+                        <button type="button" class="back-button" onclick="goToHome()">Volver al inicio</button>
+                        <button type="button" class="next-button" onclick="showSection(2)">Continuar con el Envío</button>
+                    </div>                
+                </form>
+            </div>
+
+            <!-- Sección de Método de Envío -->
+            <div id="section-2" style="display: none;">
+                <h2>Método de Envío</h2>
+                <p>Selecciona el método de envío:</p>
+                <label>
+                    <input type="radio" name="shipping" value="standard" checked>
+                    Envío estándar - Gratis
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="shipping" value="express">
+                    Envío express - $500
+                </label>
+                <div class="button-group">
+                    <button type="button" class="back-button" onclick="showSection(1)">Volver a Información</button>
+                    <button type="button" class="next-button" onclick="showSection(3)">Continuar con el Pago</button>
+                </div>
+                        </div>
+
+            <!-- Sección de Pago -->
+            <div id="section-3" style="display: none;">
+                <h2>Pago</h2>
+                <p>Elige un método de pago:</p>
+                
+                <label>
+                    <input type="radio" name="payment" value="transfer" checked onclick="showTransferDetails()">
+                    Transferencia Bancaria (Mercado Pago)
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="payment" value="card" onclick="hideTransferDetails()">
+                    Tarjeta de Crédito/Débito
+                </label>
+                
+                <div id="transfer-details" style="display: block; margin-top: 20px;">
+                    <h3>Detalles para Transferencia</h3>
+                    <p><strong>Alias:</strong> Catlex.mp</p>
+                    <p><strong>CVU:</strong>0000003100040116483467</p>
+                    <p><strong>Banco:</strong> Mercado Pago</p>
+                    
+                    <h4>Adjunta el comprobante de pago</h4>
+                    <label for="screenshot-upload" class="upload-label">
+                        <div class="upload-box">
+                            <span>Haz click aquí para adjuntar la captura</span>
+                        </div>
+                    </label>
+                    <input type="file" id="screenshot-upload" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                    
+                    <div id="preview-container" style="margin-top: 15px;">
+                        <!-- Vista previa de la imagen cargada -->
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" class="back-button" onclick="showSection(2)">Volver a Envío</button>
+                    <button type="submit" class="next-button" onclick="submitOrder()">Finalizar Compra</button>
+                </div>
+            </div>
+
+    </div>
+     <!-- Resumen de Compra -->
+     <div class="checkout-summary">
+        <h3>Resumen de Compra</h3>
+        <div class="cart-item-content" id="cart-item">
+            <img src="producto1.jpg" alt="Producto 1" class="product-image">
+            <div class="item-info">
+                <span class="item-price"></span>
+            </div>
+        </div>
+   
+
+        <hr>
+        <p>Envios: <strong >No hay método de envío disponible</strong></p>
+       
+        <p>Total: <strong id="precio-recibido" ></strong></p>
+    </div>
+    <footer class="footer">
+        <p>Luxury © 2025</p>
+    </footer>
+
+
+
+
+    <script src="js/navbar/js-cart/checkout.js"></script>
+
+<script>
+    // Ejemplo de arrays con datos
+    const nombres = ["Roberto", "María", "Carlos", "Lucía", "Agustina"];
+    const apellidos = ["Díaz", "Pérez", "Sánchez", "González", "Rodríguez"];
+    const ciudades = ["Buenos Aires", "Córdoba", "Rosario", "Mendoza", "Mar del Plata"];
+    const direcciones = [
+      "Falsa 123",
+      "Mitre 456",
+      "Belgrano 789",
+      "San Martín 101",
+      "Sarmiento 202"
+    ];
+    const correos = ["gmail.com", "hotmail.com", "yahoo.com"];
+  
+    function generarDatos() {
+      // Función para elegir un elemento aleatorio de un array
+      const randomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  
+      // Generar nombre y apellido
+      const nombreAleatorio = randomItem(nombres);
+      const apellidoAleatorio = randomItem(apellidos);
+  
+      // Generar correo con nombre y apellido
+      const dominioAleatorio = randomItem(correos);
+      const correoAleatorio = (
+        nombreAleatorio.toLowerCase() +
+        apellidoAleatorio.toLowerCase() +
+        "@" + dominioAleatorio
+      );
+  
+      // Asignar a los campos
+      document.getElementById("nombre").value = nombreAleatorio;
+      document.getElementById("apellido").value = apellidoAleatorio;
+      document.getElementById("email").value = correoAleatorio;
+      document.getElementById("direccion").value = randomItem(direcciones);
+      document.getElementById("ciudad").value = randomItem(ciudades);
+      document.getElementById("codigo-postal").value = Math.floor(Math.random() * 9000) + 1000; // Ejemplo
+      document.getElementById("dni").value = Math.floor(Math.random() * 90000000) + 10000000;  // Ejemplo
+    }
+  
+    // Si deseas que se genere automáticamente al cargar la página, puedes llamar a generarDatos() en window.onload
+    // window.onload = generarDatos;
+  </script>
+  
+</body>
+</html>

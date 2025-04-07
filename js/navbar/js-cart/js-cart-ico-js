@@ -1,0 +1,166 @@
+/* --------------------------------------------------------------------------------------- */
+/*                                     CARRITO                                          */   
+/* --------------------------------------------------------------------------------------- */
+
+
+
+let cartItems = {}; // Objeto para almacenar productos en el carrito
+let cartItemCount = 0; // Contador de productos en el carrito
+const shippingThreshold = 400000; // Umbral para envío gratuito
+
+// Función para agregar productos al carrito
+function addToCart(productId) {
+  const productTitle = document.getElementById(`prod_title-${productId}`).innerText;
+  const productPriceText = document.getElementById(`prod_price-${productId}`).innerText;
+  const productPrice = parseInt(productPriceText.replace(/[^0-9]/g, '')); // Extrae el valor numérico del precio
+  const productImage = document.getElementById(`prod_image-${productId}`).src;
+
+  // Verificar si el producto ya está en el carrito
+  if (cartItems[productId]) {
+    cartItems[productId].quantity += 1; // Incrementa la cantidad si ya está en el carrito
+  } else {
+    // Agregar nuevo producto al carrito
+    cartItems[productId] = {
+      title: productTitle,
+      price: productPrice,
+      image: productImage,
+      quantity: 1
+    };
+  }
+
+  updateCartCount();
+  updateCartDisplay();
+  calculateTotal();
+}
+
+// Actualizar contador del carrito
+function updateCartCount() {
+  cartItemCount = Object.values(cartItems).reduce((total, item) => total + item.quantity, 0);
+  document.getElementById("cart-count").textContent = cartItemCount;
+}
+
+// Actualizar visualización del carrito
+function updateCartDisplay() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  cartItemsContainer.innerHTML = ""; // Limpiar contenido actual
+
+  for (const [id, item] of Object.entries(cartItems)) {
+    const cartItemHTML = `
+      <div class="cart-item" id="cart-item-${id}" data-price="${item.price}">
+        <img src="${item.image}" alt="${item.title}">
+        <div class="item-details">
+          <h4>${item.title}</h4>
+          <div class="quantity-controls">
+            <button onclick="changeQuantity('decrease', '${id}')">-</button>
+            <span id="quantity-${id}">${item.quantity}</span>
+            <button onclick="changeQuantity('increase', '${id}')">+</button>
+          </div>
+          <p class="item-price" id="price-${id}">$${(item.price * item.quantity).toLocaleString()}</p>
+        </div>
+        <button class="remove-item" onclick="removeItem('${id}')">✕</button>
+      </div>
+    `;
+    cartItemsContainer.insertAdjacentHTML("beforeend", cartItemHTML);
+  }
+}
+
+// Cambiar cantidad de un producto
+function changeQuantity(action, productId) {
+  if (cartItems[productId]) {
+    if (action === "increase") {
+      cartItems[productId].quantity += 1;
+    } else if (action === "decrease" && cartItems[productId].quantity > 1) {
+      cartItems[productId].quantity -= 1;
+    }
+
+    updateCartDisplay();
+    calculateTotal();
+  }
+}
+
+// Eliminar un producto del carrito
+function removeItem(productId) {
+  delete cartItems[productId];
+  updateCartDisplay();
+  updateCartCount();
+  calculateTotal();
+}
+
+// Calcular el precio total
+function calculateTotal() {
+  let totalAmount = 0;
+  for (const item of Object.values(cartItems)) {
+    totalAmount += item.price * item.quantity;
+  }
+
+  document.getElementById("total-price").innerText = `$${totalAmount.toLocaleString()}`;
+  updateShippingProgress(totalAmount);
+}
+
+// Actualizar progreso de envío gratuito
+function updateShippingProgress(totalAmount) {
+  const remaining = shippingThreshold - totalAmount;
+  const shippingRemainingElement = document.getElementById("shipping-remaining");
+  const progressBar = document.getElementById("progress-bar");
+
+  if (remaining > 0) {
+    shippingRemainingElement.innerText = `$${remaining.toLocaleString()}`;
+    progressBar.style.width = `${(totalAmount / shippingThreshold) * 100}%`;
+  } else {
+    shippingRemainingElement.innerText = "¡Envío gratis alcanzado!";
+    progressBar.style.width = "100%";
+  }
+}
+
+// Función para cerrar el modal del carrito
+function toggleCart() {
+  const cartMenu = document.getElementById("cart-menu");
+  cartMenu.style.display = "none"; // Oculta el modal
+}
+
+// Asigna el evento al botón de cierre
+document.getElementById("close-button").addEventListener("click", closeCartModal);
+
+
+
+// Función para actualizar la interfaz del carrito (si la tienes)
+function updateCartUI() {
+  // Aquí puedes recorrer el Local Storage, actualizar contadores, etc.
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+// Agregar evento a todos los botones "Agregar al carrito"
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function(e) {
+    // Buscar la tarjeta de producto correspondiente
+    const productElement = e.target.closest('.carousel-item');
+    const title = productElement.querySelector('.product-title').textContent;
+    const priceText = productElement.querySelector('.price').textContent;
+    // Para efectos del ejemplo, extraemos solo los dígitos del precio
+    const price = parseFloat(priceText.replace(/[^0-9\.]+/g,""));
+    
+    // Crear objeto producto
+    const product = { title, price, quantity: 1 };
+    
+    // Recuperar el carrito actual del Local Storage (o crear un array vacío)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Buscar si ya existe el producto (por título, por ejemplo)
+    const existingProduct = cart.find(item => item.title === title);
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      cart.push(product);
+    }
+    
+    // Guardar el carrito actualizado
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    updateCartUI();
+    alert(`Se agregó "${title}" al carrito.`);
+  });
+});
+
+// Llamar a updateCartUI() al cargar la página
+document.addEventListener('DOMContentLoaded', updateCartUI);
