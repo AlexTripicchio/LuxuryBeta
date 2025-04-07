@@ -352,7 +352,6 @@ section {
 
 /*PRODUCTOS*/
 /* Estilos generales (opcional) */
-
 /* Contenedor principal  */
 .ml-container {
   max-width: 1200px;   /* Ancho máximo */
@@ -380,27 +379,26 @@ section {
   font-size: 0.95rem;
 }
 
-/* Contenedor con scroll horizontal */
+/* Contenedor adaptado para Swiper */
 .productos-container {
   display: flex;         /* Muestra en fila */
-  overflow-x: auto;      /* Scroll horizontal */
   gap: 16px;             /* Espacio entre tarjetas */
-  padding-bottom: 10px;  /* Un poco de espacio para que no corte */
+  padding-bottom: 10px;  /* Espacio inferior */
+  overflow: hidden;      /* Evita scroll nativo, lo maneja Swiper */
 }
 
-#inicio{
-  background:linear-gradient(#6a0dad 2%,rgb(26, 26, 26)) 90%;
-
+#inicio {
+  background: linear-gradient(#6a0dad 2%, rgb(26, 26, 26)) 90%;
 }
 
-/* Mantengo tus estilos de .carousel-item */
+/* Estilos para cada tarjeta */
 .carousel-item {
   background-color: #8b4ede; /* Morado */
   color: #fff;
   width: 250px;
   min-height: 340px;
   border-radius: 10px;
-  margin: 0 10px;  /* puedes quitarlo si usas gap */
+  margin: 0 10px;  /* Puedes quitarlo si usas gap */
   padding: 20px;
   text-align: center;
   flex-shrink: 0;  /* Evita que se reduzca si no hay espacio */
@@ -429,6 +427,16 @@ section {
 .price {
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+/* Estilos para los controles de Swiper */
+.swiper-pagination {
+  bottom: 10px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  margin-top: -50px;
 }
 
 /* (Opcional) Si quisieras añadir el bloque de cantidad y botón de "Agregar" */

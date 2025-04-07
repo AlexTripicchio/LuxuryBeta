@@ -32,12 +32,24 @@
             </ul>
             </div>
         </nav>
-        <div class="search-container">
 
-            <input type="text" placeholder="Buscar productos...">
-            <button type="submit">Buscar</button>
-            
-        </div>
+       <div>
+        <a href="index.html" class="logo">Luxury<span class="logo-sub">VAPE</span></a>
+      <style>
+      .logo {
+        display: flex;
+        font-size: 30px;
+        color: black;
+        text-decoration: none;
+        }
+      .logo-sub {
+        color: white;
+        }
+
+    </style>
+      </div>
+        
+
         <div class="user-cart">
             <button id="login-register">Iniciar Sesión / Registro</button>
         </div>
@@ -123,94 +135,134 @@
     <section id="productos">
         <h2>Productos</h2>
         <p>Explora nuestra variedad de vapers y líquidos.</p>
+ <!-- Swiper CSS -->
+ <link
+ rel="stylesheet"
+ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<!-- Tu CSS -->
+<link rel="stylesheet" href="./styles.css" />
+<title>Más vendidos de la semana en Vapes</title>
+</head>
+<body>
+<!-- Contenedor principal adaptado para Swiper -->
+<div class="ml-container swiper">
+ <!-- Encabezado con título -->
+ <div class="ml-header">
+   <h2>Más vendidos de la semana en Vapes</h2>
+ </div>
+ <!-- Contenedor de tarjetas adaptado a Swiper (swiper-wrapper) -->
+ <div class="productos-container swiper-wrapper">
+   <!-- Tarjeta 1 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape1.png" alt="Producto 1" />
+     </div>
+     <h3 class="product-title">Phenom 6.0G MUSH</h3>
+     <p class="price">$80.000</p>
+   </div>
+   <!-- Tarjeta 2 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape2.png" alt="Producto 2" />
+     </div>
+     <h3 class="product-title">LostMary 30k PUFF MIXER</h3>
+     <p class="price">$32.000</p>
+   </div>
+   <!-- Tarjeta 3 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape3.png" alt="Producto 3" />
+     </div>
+     <h3 class="product-title">IGNITE V150</h3>
+     <p class="price">$27.000</p>
+   </div>
+   <!-- Tarjeta 4 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape4.png" alt="Producto 4" />
+     </div>
+     <h3 class="product-title">ELFBAR 40K PUFF</h3>
+     <p class="price">$34.000</p>
+   </div>
+   <!-- Tarjeta 5 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape5.png" alt="Producto 5" />
+     </div>
+     <h3 class="product-title">TORCH 7,5G</h3>
+     <p class="price">$80.000</p>
+   </div>
+   <!-- Tarjeta 6 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape6.png" alt="Producto 6" />
+     </div>
+     <h3 class="product-title">TORCH 5,0G</h3>
+     <p class="price">$60.000</p>
+   </div>
+   <!-- Tarjeta 7 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape7.png" alt="Producto 7" />
+     </div>
+     <h3 class="product-title">GEEKBAR 25K PUFF</h3>
+     <p class="price">$26.000</p>
+   </div>
+   <!-- Tarjeta 8 -->
+   <div class="carousel-item swiper-slide">
+     <div class="img-container">
+       <img src="img/vape8.png" alt="Producto 8" />
+     </div>
+     <h3 class="product-title">PHENOM 6.0G</h3>
+     <p class="price">$75.000</p>
+   </div>
+ </div>
+ <!-- Controles de Swiper -->
+ <div class="swiper-pagination"></div>
+ <div class="swiper-button-prev swiper-slide-btn"></div>
+ <div class="swiper-button-next swiper-slide-btn"></div>
+</div>
 
-
-     <!-- Contenedor principal -->
-  <div class="ml-container">
-    <!-- Encabezado con título -->
-    <div class="ml-header">
-      <h2>Más vendidos de la semana en Vapes</h2>
-    </div>
-
-    <!-- Contenedor que hace scroll horizontal con tus tarjetas -->
-    <div class="productos-container">
-      
-      <!-- Tarjeta 1 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape1.png" alt="Producto 1">
-        </div>
-        <h3 class="product-title">Phenom 6.0G MUSH</h3>
-        <p class="price">$80.000</p>
-      </div>
-      
-      <!-- Tarjeta 2 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape2.png" alt="Producto 2">
-        </div>
-        <h3 class="product-title">LostMary 30k PUFF MIXER</h3>
-        <p class="price">$32.000</p>
-      </div>
-      
-      <!-- Tarjeta 3 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape3.png" alt="Producto 3">
-        </div>
-        <h3 class="product-title">IGNITE V150</h3>
-        <p class="price">$27.000</p>
-      </div>
-      
-      <!-- Tarjeta 4 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape4.png" alt="Producto 4">
-        </div>
-        <h3 class="product-title">ELFBAR 40K PUFF</h3>
-        <p class="price">$34.000</p>
-      </div>
-      
-      <!-- Tarjeta 5 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape5.png" alt="Producto 5">
-        </div>
-        <h3 class="product-title">TORCH 7,5G</h3>
-        <p class="price">$80.000</p>
-      </div>
-      
-      <!-- Tarjeta 6 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape6.png" alt="Producto 6">
-        </div>
-        <h3 class="product-title">TORCH 5,0G</h3>
-        <p class="price">$60.000</p>
-      </div>
-      
-      <!-- Tarjeta 7 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape7.png" alt="Producto 7">
-        </div>
-        <h3 class="product-title">GEEKBAR 25K PUFF</h3>
-        <p class="price">$26.000</p>
-      </div>
-      
-      <!-- Tarjeta 8 -->
-      <div class="carousel-item">
-        <div class="img-container">
-          <img src="img/vape8.png" alt="Producto 8">
-        </div>
-        <h3 class="product-title">PHENOM 6.0G</h3>
-        <p class="price">75.000</p>
-      </div>
-      
-    </div> <!-- Fin .productos-container -->
-  </div> <!-- Fin .ml-container -->
-    </section>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Inicialización de Swiper -->
+<script>
+ const swiper = new Swiper('.ml-container', {
+   loop: true,
+   grabCursor: true,
+   spaceBetween: 30,
+   pagination: {
+     el: '.swiper-pagination',
+     clickable: true,
+     dynamicBullets: true,
+   },
+   navigation: {
+     nextEl: '.swiper-button-next',
+     prevEl: '.swiper-button-prev',
+   },
+   autoplay: {
+     delay: 3000,
+     disableOnInteraction: false,
+   },
+   breakpoints: {
+     0: {
+       slidesPerView: 1,
+     },
+     510: {
+       slidesPerView: 2,
+     },
+     785: {
+       slidesPerView: 3,
+     },
+     1024: {
+       slidesPerView: 3,
+     },
+   },
+ });
+</script>
     
+
     <section class="catalog-container">
         <div class="button-column">
             <button class="catalog-btn" onclick="showCatalog('catalog1')" >  <span class="dinamico">Godiness</span>
@@ -227,14 +279,8 @@
        
     <div id="catalogo" class="catalog-content">
 
-        
-
-
-
-
         <!-- Carrusel: contiene las tarjetas -->
         <div class="carousel" id="catalog1">
-          <button class="carousel-btn prev">&#10094;</button>
           <!-- Tarjeta 1 -->
           <div class="carousel-item">
             <div class="img-container">
@@ -244,7 +290,7 @@
             <p class="price">32000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog1-1')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -257,7 +303,7 @@
             <p class="price">27000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog1-2')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -270,7 +316,7 @@
             <p class="price">34000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog1-3')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -283,12 +329,9 @@
             <p class="price">28000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog1-4')">Agregar al carrito</button>
             </div>
-          </div>
-          
-          <button class="carousel-btn next">&#10095;</button>
-       
+          </div>      
         </div>
         <!-- Fin de .carousel -->
     
@@ -310,7 +353,7 @@
             <p class="price">75000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog2-1')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -323,7 +366,7 @@
             <p class="price">75000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog2-2')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -336,7 +379,7 @@
             <p class="price">80000</p>
             <div class="quantity-add">
               <input type="number" value="1" min="1" max="10">
-              <button class="add-to-cart" onclick="addtocart(this, '3')">Agregar al carrito</button>
+              <button class="add-to-cart" onclick="addtocart(this, 'catalog2-3')">Agregar al carrito</button>
             </div>
           </div>
           
@@ -359,7 +402,7 @@
           <p class="price">80000</p>
           <div class="quantity-add">
             <input type="number" value="1" min="1" max="10">
-            <button class="add-to-cart" onclick="addtocart(this, '1')">Agregar al carrito</button>
+            <button class="add-to-cart" onclick="addtocart(this, 'catalog3-1')">Agregar al carrito</button>
           </div>
         </div>
         
@@ -372,7 +415,7 @@
           <p class="price">80000</p>
           <div class="quantity-add">
             <input type="number" value="1" min="1" max="10">
-            <button class="add-to-cart" onclick="addtocart(this, '2')">Agregar al carrito</button>
+            <button class="add-to-cart" onclick="addtocart(this, 'catalog3-2')">Agregar al carrito</button>
           </div>
         </div>
         

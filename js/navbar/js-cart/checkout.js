@@ -90,48 +90,59 @@ if (file) {
 }
 }
 
+
+
+// function submitOrder() {
+//   // Recopila la información del cliente (asegúrate de que los IDs coincidan con tus campos)
+//   const orderData = {
+//     customer: {
+//       email: document.getElementById('email').value,
+//       nombre: document.getElementById('nombre').value,
+//       apellido: document.getElementById('apellido').value,
+//       direccion: document.getElementById('direccion').value,
+//       ciudad: document.getElementById('ciudad').value,
+//       provincia: document.getElementById('provincia').value,
+//       codigoPostal: document.getElementById('codigo-postal').value,
+//       dni: document.getElementById('dni').value,
+//      // producto: document.getElementById('product-title').value,
+//     //precio: document.getElementById('total-price').value
+//     },
+//     // Recupera los productos del carrito almacenado en localStorage (o un array vacío)
+//     cart: JSON.parse(localStorage.getItem('cart')) || []
+//   };
+
+//   // --- Parte 1: Descargar archivo con la información ---
+//   const fileContent = JSON.stringify(orderData, null, 2);
+//   const blob = new Blob([fileContent], { type: 'application/json' });
+//   const url = URL.createObjectURL(blob);
+//   const downloadLink = document.createElement('a');
+//   downloadLink.href = url;
+//   downloadLink.download = 'order.json';
+//   document.body.appendChild(downloadLink);
+//   downloadLink.click();
+//   document.body.removeChild(downloadLink);
+
+//   // --- Parte 2: Enviar correo usando EmailJS ---
+//   emailjs.send("service_dwzmmm2", "template_v54i80e", {
+//       order_details: fileContent,
+//       to_email: "alexander.tripicchio@gmail.com"
+//     })
+//     .then(function(response) {
+//       console.log("SUCCESS", response.status, response.text);
+//       alert("Orden finalizada, se descargó el archivo y se envió el correo.");
+//       // Opcional: Limpiar el carrito
+//       localStorage.removeItem("cart");
+//       // Redirigir o realizar otra acción, si lo deseas.
+//     }, function(error) {
+//       console.error("FAILED", error);
+//       alert("Error al enviar el correo. Inténtalo nuevamente.");
+//     });
+// }
+
+
+
 function submitOrder() {
-    // Recopilar datos del formulario de checkout
-    const orderData = {
-      customer: {
-        email: document.getElementById('email').value,
-        nombre: document.getElementById('nombre').value,
-        apellido: document.getElementById('apellido').value,
-        // Agrega los demás campos según tu formulario
-        direccion: document.getElementById('direccion').value,
-        ciudad: document.getElementById('ciudad').value,
-        provincia: document.getElementById('provincia').value,
-        codigoPostal: document.getElementById('codigo-postal').value,
-        dni: document.getElementById('dni').value,
-      //  producto: document.getElementById('product-title').value,
-     //   precio: document.getElementById('price').value
-      },
-      // Recuperar los productos del carrito almacenado en localStorage
-      cart: JSON.parse(localStorage.getItem('cart')) || []
-    };
-  
-    // Enviar los datos al script PHP (por ejemplo, "save_order.php")
-    fetch('save_order.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        alert("Compra finalizada. ¡Gracias por tu compra!");
-        // Limpiar el carrito
-        localStorage.removeItem('cart');
-        // Redirigir a una página de confirmación, si lo deseas
-        window.location.href = "order_confirmation.html";
-      } else {
-        alert("Hubo un error al procesar la orden. Inténtalo nuevamente.");
-      }
-    })
-    .catch(error => console.error("Error:", error));
-  }
-function submitOrder() {
-  // Recopila la información del cliente (asegúrate de que los IDs coincidan con tus campos)
+  // Paso 1: Recopilar datos del formulario de checkout
   const orderData = {
     customer: {
       email: document.getElementById('email').value,
@@ -141,15 +152,33 @@ function submitOrder() {
       ciudad: document.getElementById('ciudad').value,
       provincia: document.getElementById('provincia').value,
       codigoPostal: document.getElementById('codigo-postal').value,
-      dni: document.getElementById('dni').value,
-     // producto: document.getElementById('product-title').value,
-    //precio: document.getElementById('total-price').value
-    },
-    // Recupera los productos del carrito almacenado en localStorage (o un array vacío)
-    cart: JSON.parse(localStorage.getItem('cart')) || []
+      dni: document.getElementById('dni').value
+    }
   };
 
-  // --- Parte 1: Descargar archivo con la información ---
+  // Paso 2: Extraer los detalles de productos desde el HTML guardado en localStorage
+  const productosHTML = localStorage.getItem("productos") || "";
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = productosHTML;
+  const itemElements = tempDiv.querySelectorAll(".item-details");
+  let extractedProducts = [];
+  
+  itemElements.forEach(item => {
+    const name = item.querySelector("h4") ? item.querySelector("h4").innerText : "Sin nombre";
+    const quantityElement = item.querySelector(".quantity-controls span");
+    const quantity = quantityElement ? quantityElement.innerText : "0";
+    const price = item.querySelector(".item-price") ? item.querySelector(".item-price").innerText : "$0";
+    extractedProducts.push({ name, quantity, price });
+  });
+
+  // Paso 3: Recuperar el precio total
+  const totalPrice = localStorage.getItem("precioFinal") || "No disponible";
+
+  // Paso 4: Incorporar los datos de productos y el total en orderData
+  orderData.productos = extractedProducts;
+  orderData.total = totalPrice;
+
+  // Paso 5: Descargar el archivo con la información (archivo .json)
   const fileContent = JSON.stringify(orderData, null, 2);
   const blob = new Blob([fileContent], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -160,22 +189,14 @@ function submitOrder() {
   downloadLink.click();
   document.body.removeChild(downloadLink);
 
-  // --- Parte 2: Enviar correo usando EmailJS ---
-  emailjs.send("service_dwzmmm2", "template_v54i80e", {
-      order_details: fileContent,
-      to_email: "alexander.tripicchio@gmail.com"
-    })
-    .then(function(response) {
-      console.log("SUCCESS", response.status, response.text);
-      alert("Orden finalizada, se descargó el archivo y se envió el correo.");
-      // Opcional: Limpiar el carrito
-      localStorage.removeItem("cart");
-      // Redirigir o realizar otra acción, si lo deseas.
-    }, function(error) {
-      console.error("FAILED", error);
-      alert("Error al enviar el correo. Inténtalo nuevamente.");
-    });
+  // Paso 6: Limpiar el carrito (y opcionalmente los productos) y redirigir si es necesario
+  localStorage.removeItem("cart");
+  // localStorage.removeItem("productos");
+
+  // (Opcional) Redirigir a una página de confirmación:
+  // window.location.href = "order_confirmation.html";
 }
+
 
 const precioFinal = localStorage.getItem("precioFinal");
 const productosObtenidos = localStorage.getItem("productos")

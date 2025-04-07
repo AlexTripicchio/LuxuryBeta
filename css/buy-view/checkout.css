@@ -382,10 +382,11 @@ footer {
 }
 
 .cart-item img{
-    display: none;
+    display: flex;
+    width: 6rem;
 }
 
 .cart-item button{
-    display: none;
+    display: no;
 }
 
